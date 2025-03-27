@@ -1,0 +1,28 @@
+services:
+  postgres:
+    image: postgres:17
+    env_file: ".env"
+    environment:
+      PGUSER: ${POSTGRES_USER}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready", "-d", "${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+    ports:
+      - "${DB_PORT:-5432}:${DB_PORT:-5432}"
+
+  fastapi-app:
+    build:
+      context: .
+      args:
+        port: "8080"
+    env_file: ".env"
+    environment:
+      DB_HOST: postgres
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: on-failure:3
+    ports:
+      - "${APPLICATION_PORT:-8080}:${APPLICATION_PORT:-8080}"
