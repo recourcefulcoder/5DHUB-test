@@ -5,7 +5,7 @@
     <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ignoredPackages">
         <value>
-          <list size="139">
+          <list size="140">
             <item index="0" class="java.lang.String" itemvalue="pyinstaller" />
             <item index="1" class="java.lang.String" itemvalue="image" />
             <item index="2" class="java.lang.String" itemvalue="pygame" />
@@ -145,6 +145,7 @@
             <item index="136" class="java.lang.String" itemvalue="fastapi" />
             <item index="137" class="java.lang.String" itemvalue="SQLAlchemy" />
             <item index="138" class="java.lang.String" itemvalue="fastaspi" />
+            <item index="139" class="java.lang.String" itemvalue="httpx" />
           </list>
         </value>
       </option>

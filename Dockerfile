@@ -24,7 +24,4 @@ ENV PYTHONPATH="/app:${PYTHONPATH}"
 
 EXPOSE 8000
 
-ARG port="8080"
-ENV APPLICATION_PORT=${port}
-
-CMD ["sh", "-c", "fastapi run src/main.py --port $APPLICATION_PORT"]
+CMD ["fastapi", "run", "src/main.py", "--port", "8000"]

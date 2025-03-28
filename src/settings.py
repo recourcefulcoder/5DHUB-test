@@ -22,3 +22,11 @@ POSTGRES_DB = os.getenv("POSTGRES_DB")
 
 DB_HOST = os.getenv("DB_HOST", default="localhost")
 DB_PORT = int(os.getenv("DB_PORT", default="5432"))
+
+TEST_POSTGRES_DB = os.getenv("TEST_POSTGRES_DB")
+TESTING = os.getenv("TESTING", default="False").lower() in [
+    "true",
+    "yes",
+    "y",
+    "1",
+]
