@@ -1,0 +1,61 @@
+name: tests
+on:
+  [workflow_dispatch, push]
+
+
+jobs:
+  testing:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: sevrice-test
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+    env:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      TEST_POSTGRES_DB: sevrice-test
+      TESTING: True
+      PYTHONPATH: ${{ github.workspace }}:$PYTHONPATH
+    strategy:
+      matrix:
+        python-version: [ "3.12" ]
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Tests
+        run: |
+          cd tests
+          pytest -s
+
+
+  linting:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [ "3.12" ]
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Run Linting
+        shell: bash
+        run: |
+          pip install flake8 flake8-import-order flake8-print
+          flake8 .

@@ -1,14 +1,14 @@
-import pytest_asyncio
-
 from database.engine import engine
 from database.models import Base, Link
 
-from src.main import app
+from httpx import ASGITransport, AsyncClient
+
+import pytest_asyncio
 
 from sqlalchemy import delete
 from sqlalchemy.ext.asyncio import async_sessionmaker
 
-from httpx import ASGITransport, AsyncClient
+from src.main import app
 
 from . import testvars
 
@@ -46,4 +46,3 @@ async def _teardown_db(module_session):
     yield
     await module_session.execute(delete(Link))
     await module_session.commit()
-

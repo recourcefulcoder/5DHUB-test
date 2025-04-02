@@ -3,7 +3,8 @@ from sqlalchemy.ext.asyncio import create_async_engine
 
 import src.settings as settings
 
-DB_NAME = settings.TEST_POSTGRES_DB if settings.TESTING else settings.POSTGRES_DB
+DB_NAME = settings.TEST_POSTGRES_DB if settings.TESTING \
+    else settings.POSTGRES_DB
 
 url_object = URL.create(
     "postgresql+asyncpg",

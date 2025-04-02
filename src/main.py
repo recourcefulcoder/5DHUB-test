@@ -4,16 +4,15 @@ from typing import Optional
 from database.engine import engine
 from database.models import Base, Link
 
-import src.dependencies as dp
-
-import src.pydmodels as pym
+from fastapi import Body, FastAPI, HTTPException, Request, Response, status
 
 import pyshorteners
 
-from sqlalchemy import select
 import sqlalchemy.exc as se
+from sqlalchemy import select
 
-from fastapi import Body, FastAPI, Response, Request, HTTPException, status
+import src.dependencies as dp
+import src.pydmodels as pym
 
 
 @asynccontextmanager
@@ -119,4 +118,7 @@ async def request_service(
             headers=headers
         )
 
-    return Response(content=api_response.content, status_code=api_response.status_code)
+    return Response(
+        content=api_response.content,
+        status_code=api_response.status_code
+    )

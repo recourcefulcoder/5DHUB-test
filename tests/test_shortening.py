@@ -1,12 +1,12 @@
-import pytest
+from http import HTTPStatus
 
 from database.models import Link
 
-from src.main import app
+import pytest
 
 from sqlalchemy import select
 
-from fastapi import status
+from src.main import app
 
 ENDPOINT_LINK = app.url_path_for("shorten_link")
 
@@ -22,7 +22,7 @@ async def test_201_on_valid(client):
         ENDPOINT_LINK,
         json=payload
     )
-    assert response.status_code == status.HTTP_201_CREATED
+    assert response.status_code == HTTPStatus.CREATED
 
 
 async def test_valid_return_json(client):
@@ -68,4 +68,4 @@ async def test_rejects_existing_link(client, session):
         ENDPOINT_LINK,
         json=payload
     )
-    assert response.status_code == status.HTTP_409_CONFLICT
+    assert response.status_code == HTTPStatus.CONFLICT

@@ -1,3 +1,5 @@
+![tests](https://github.com/recourcefulcoder/5DHUB-test/actions/workflows/tests/badge.svg)
+
 # 5DHUB-test
 initial task for 5DHUB internship 
 
@@ -8,6 +10,8 @@ Table of contents:
   - [Manually](#manually)
 - [Testing](#testing)
 - [Documentation](#documentation)
+  - [Code style conventions](#style-conventions) 
+  - [Endpoints](#endpoints) 
   - [Environment variables](#environment-variables)
 
 
@@ -84,6 +88,24 @@ pytest
 ```
 
 ## Documentation
+
+### Style conventions
+
+Code must meet PEP8 requirements; <br> Simply put, code is properly formatted 
+if it passes flake8 validation with following plugins:
+
+- [flake8-import-order](https://pypi.org/project/flake8-import-order/)
+- [flake8-print](https://pypi.org/project/flake8-print/)
+
+You can install all required linting tools by running
+
+```bash
+pip install --upgrade pip
+pip install flake8 flake8-print flake8-import-order   
+```
+
+
+### Endpoints 
 
 Actual shortening is made via [pyshorteners](https://pyshorteners.readthedocs.io/en/latest/) 
 python library

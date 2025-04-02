@@ -2,11 +2,11 @@ from typing import Annotated
 
 from database.engine import engine
 
-from httpx import AsyncClient
-
 from fastapi import Depends
 
-from sqlalchemy.ext.asyncio import async_sessionmaker, AsyncSession
+from httpx import AsyncClient
+
+from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
 
 async def get_session():

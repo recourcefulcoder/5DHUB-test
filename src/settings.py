@@ -1,3 +1,4 @@
+import logging
 import os
 from pathlib import Path
 
@@ -10,7 +11,7 @@ def load_environ():
     if os.path.isfile(env_file):
         load_dotenv(env_file)
     else:
-        print("Alert: .env file not found!")
+        logging.warning(".env file not found!")
 
 
 load_environ()
