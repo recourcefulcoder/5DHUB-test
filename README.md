@@ -1,4 +1,4 @@
-![tests](https://github.com/recourcefulcoder/5DHUB-test/actions/workflows/tests/badge.svg)
+![tests](https://github.com/recourcefulcoder/5DHUB-test/actions/workflows/tests.yaml/badge.svg)
 
 # 5DHUB-test
 initial task for 5DHUB internship 
